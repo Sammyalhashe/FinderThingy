@@ -14,6 +14,9 @@
 		D3415B031F1B310900B9D4E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3415B011F1B310900B9D4E7 /* LaunchScreen.storyboard */; };
 		D3415B0E1F1B310900B9D4E7 /* FinderThingyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3415B0D1F1B310900B9D4E7 /* FinderThingyTests.swift */; };
 		D3415B191F1B310900B9D4E7 /* FinderThingyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3415B181F1B310900B9D4E7 /* FinderThingyUITests.swift */; };
+		D8B60884F0EEDDD670641373 /* Pods_FinderThingyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EE8B29D9845930D644052D /* Pods_FinderThingyTests.framework */; };
+		EBD1F650F438C7056263E4EA /* Pods_FinderThingyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F596EDFBEF0479762EF975 /* Pods_FinderThingyUITests.framework */; };
+		ED8B1EDBDCF77CFDDEC46E02 /* Pods_FinderThingy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA58D4F2CB71E96EE1B4EB3D /* Pods_FinderThingy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15B2A9AF749DA7E25A00F45A /* Pods-FinderThingyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingyTests/Pods-FinderThingyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3577E8756ECE122574221549 /* Pods-FinderThingyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingyTests/Pods-FinderThingyTests.release.xcconfig"; sourceTree = "<group>"; };
+		75893072FFD2A27B8FADA604 /* Pods-FinderThingy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingy/Pods-FinderThingy.debug.xcconfig"; sourceTree = "<group>"; };
+		BDB288F84F72308FEC2904B1 /* Pods-FinderThingyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingyUITests/Pods-FinderThingyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3415AF51F1B310900B9D4E7 /* FinderThingy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinderThingy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3415AF81F1B310900B9D4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3415AFA1F1B310900B9D4E7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		D3415B141F1B310900B9D4E7 /* FinderThingyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinderThingyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3415B181F1B310900B9D4E7 /* FinderThingyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderThingyUITests.swift; sourceTree = "<group>"; };
 		D3415B1A1F1B310900B9D4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D655557B706C9B832FF44E8A /* Pods-FinderThingyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingyUITests/Pods-FinderThingyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D7F596EDFBEF0479762EF975 /* Pods_FinderThingyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinderThingyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7EE8B29D9845930D644052D /* Pods_FinderThingyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinderThingyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA58D4F2CB71E96EE1B4EB3D /* Pods_FinderThingy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinderThingy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F68D18588F1E6CD5A7597113 /* Pods-FinderThingy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingy.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingy/Pods-FinderThingy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8B1EDBDCF77CFDDEC46E02 /* Pods_FinderThingy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B60884F0EEDDD670641373 /* Pods_FinderThingyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD1F650F438C7056263E4EA /* Pods_FinderThingyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,8 @@
 				D3415B0C1F1B310900B9D4E7 /* FinderThingyTests */,
 				D3415B171F1B310900B9D4E7 /* FinderThingyUITests */,
 				D3415AF61F1B310900B9D4E7 /* Products */,
+				EED88B5F27E852B790F015B2 /* Pods */,
+				DA6FA360F163586D9F47F708 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +142,29 @@
 			path = FinderThingyUITests;
 			sourceTree = "<group>";
 		};
+		DA6FA360F163586D9F47F708 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA58D4F2CB71E96EE1B4EB3D /* Pods_FinderThingy.framework */,
+				E7EE8B29D9845930D644052D /* Pods_FinderThingyTests.framework */,
+				D7F596EDFBEF0479762EF975 /* Pods_FinderThingyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EED88B5F27E852B790F015B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75893072FFD2A27B8FADA604 /* Pods-FinderThingy.debug.xcconfig */,
+				F68D18588F1E6CD5A7597113 /* Pods-FinderThingy.release.xcconfig */,
+				15B2A9AF749DA7E25A00F45A /* Pods-FinderThingyTests.debug.xcconfig */,
+				3577E8756ECE122574221549 /* Pods-FinderThingyTests.release.xcconfig */,
+				BDB288F84F72308FEC2904B1 /* Pods-FinderThingyUITests.debug.xcconfig */,
+				D655557B706C9B832FF44E8A /* Pods-FinderThingyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3415B1D1F1B310900B9D4E7 /* Build configuration list for PBXNativeTarget "FinderThingy" */;
 			buildPhases = (
+				8F30F628A7ED2A033719AFEC /* [CP] Check Pods Manifest.lock */,
 				D3415AF11F1B310900B9D4E7 /* Sources */,
 				D3415AF21F1B310900B9D4E7 /* Frameworks */,
 				D3415AF31F1B310900B9D4E7 /* Resources */,
+				E6D1C92CA5F9934069AFA40D /* [CP] Embed Pods Frameworks */,
+				08E93D5568FF241B475A3049 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3415B201F1B310900B9D4E7 /* Build configuration list for PBXNativeTarget "FinderThingyTests" */;
 			buildPhases = (
+				E74C4812BD215B23008D85FF /* [CP] Check Pods Manifest.lock */,
 				D3415B051F1B310900B9D4E7 /* Sources */,
 				D3415B061F1B310900B9D4E7 /* Frameworks */,
 				D3415B071F1B310900B9D4E7 /* Resources */,
+				8F453F9A7CA809F99745DF78 /* [CP] Embed Pods Frameworks */,
+				1BBEA6ED5A9B5A308551484A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3415B231F1B310900B9D4E7 /* Build configuration list for PBXNativeTarget "FinderThingyUITests" */;
 			buildPhases = (
+				C27C388A99D55E26E58B7C21 /* [CP] Check Pods Manifest.lock */,
 				D3415B101F1B310900B9D4E7 /* Sources */,
 				D3415B111F1B310900B9D4E7 /* Frameworks */,
 				D3415B121F1B310900B9D4E7 /* Resources */,
+				74A0B84D5099612185097035 /* [CP] Embed Pods Frameworks */,
+				4FE9F2F5E10FD97C6EA109C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +302,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08E93D5568FF241B475A3049 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingy/Pods-FinderThingy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BBEA6ED5A9B5A308551484A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingyTests/Pods-FinderThingyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FE9F2F5E10FD97C6EA109C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingyUITests/Pods-FinderThingyUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74A0B84D5099612185097035 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingyUITests/Pods-FinderThingyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F30F628A7ED2A033719AFEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F453F9A7CA809F99745DF78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingyTests/Pods-FinderThingyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C27C388A99D55E26E58B7C21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E6D1C92CA5F9934069AFA40D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinderThingy/Pods-FinderThingy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E74C4812BD215B23008D85FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D3415AF11F1B310900B9D4E7 /* Sources */ = {
@@ -410,6 +597,7 @@
 		};
 		D3415B1E1F1B310900B9D4E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75893072FFD2A27B8FADA604 /* Pods-FinderThingy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FinderThingy/Info.plist;
@@ -422,6 +610,7 @@
 		};
 		D3415B1F1F1B310900B9D4E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F68D18588F1E6CD5A7597113 /* Pods-FinderThingy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FinderThingy/Info.plist;
@@ -434,6 +623,7 @@
 		};
 		D3415B211F1B310900B9D4E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15B2A9AF749DA7E25A00F45A /* Pods-FinderThingyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,6 +638,7 @@
 		};
 		D3415B221F1B310900B9D4E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3577E8756ECE122574221549 /* Pods-FinderThingyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,6 +653,7 @@
 		};
 		D3415B241F1B310900B9D4E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDB288F84F72308FEC2904B1 /* Pods-FinderThingyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = FinderThingyUITests/Info.plist;
@@ -475,6 +667,7 @@
 		};
 		D3415B251F1B310900B9D4E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D655557B706C9B832FF44E8A /* Pods-FinderThingyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = FinderThingyUITests/Info.plist;
