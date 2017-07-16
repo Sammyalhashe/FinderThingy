@@ -19,7 +19,9 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    let pizza = Places(type: "Pizza")
+    let coffee = Places(type: "Coffee")
 
 }
 
