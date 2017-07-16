@@ -114,8 +114,10 @@
 		D3415AF71F1B310900B9D4E7 /* FinderThingy */ = {
 			isa = PBXGroup;
 			children = (
+				D3415B281F1B3C8600B9D4E7 /* Model */,
+				D3415B271F1B3C7F00B9D4E7 /* View */,
+				D3415B261F1B3C7500B9D4E7 /* Controller */,
 				D3415AF81F1B310900B9D4E7 /* AppDelegate.swift */,
-				D3415AFA1F1B310900B9D4E7 /* ViewController.swift */,
 				D3415AFC1F1B310900B9D4E7 /* Main.storyboard */,
 				D3415AFF1F1B310900B9D4E7 /* Assets.xcassets */,
 				D3415B011F1B310900B9D4E7 /* LaunchScreen.storyboard */,
@@ -140,6 +142,28 @@
 				D3415B1A1F1B310900B9D4E7 /* Info.plist */,
 			);
 			path = FinderThingyUITests;
+			sourceTree = "<group>";
+		};
+		D3415B261F1B3C7500B9D4E7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D3415B271F1B3C7F00B9D4E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3415AFA1F1B310900B9D4E7 /* ViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D3415B281F1B3C8600B9D4E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		DA6FA360F163586D9F47F708 /* Frameworks */ = {
@@ -698,6 +722,7 @@
 				D3415B1F1F1B310900B9D4E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3415B201F1B310900B9D4E7 /* Build configuration list for PBXNativeTarget "FinderThingyTests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +731,7 @@
 				D3415B221F1B310900B9D4E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3415B231F1B310900B9D4E7 /* Build configuration list for PBXNativeTarget "FinderThingyUITests" */ = {
 			isa = XCConfigurationList;
@@ -714,6 +740,7 @@
 				D3415B251F1B310900B9D4E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
