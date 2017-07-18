@@ -15,9 +15,9 @@ class Places {
     let coffeePlaces = ["Starbucks","Tim Hortons","Second Cup","Timothy's World Coffee"]
     let pizzaPlaces = ["PizzaPizza","Pizza Nova","Domino's Pizza","Gino's Pizza"]
     
-    var _places: [String]!
+    private var _places: [String]!
     
-    var places: [String]? {
+    var places: [String]! {
         get {
             return _places
         }

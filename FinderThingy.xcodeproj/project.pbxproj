@@ -16,6 +16,7 @@
 		D3415B191F1B310900B9D4E7 /* FinderThingyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3415B181F1B310900B9D4E7 /* FinderThingyUITests.swift */; };
 		D3415B2A1F1B412700B9D4E7 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3415B291F1B412700B9D4E7 /* Places.swift */; };
 		D3415B2C1F1B437800B9D4E7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3415B2B1F1B437800B9D4E7 /* MapViewController.swift */; };
+		D38255C31F1BEA86004DD4E6 /* StoreCellClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38255C21F1BEA86004DD4E6 /* StoreCellClassTableViewCell.swift */; };
 		D8B60884F0EEDDD670641373 /* Pods_FinderThingyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EE8B29D9845930D644052D /* Pods_FinderThingyTests.framework */; };
 		EBD1F650F438C7056263E4EA /* Pods_FinderThingyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F596EDFBEF0479762EF975 /* Pods_FinderThingyUITests.framework */; };
 		ED8B1EDBDCF77CFDDEC46E02 /* Pods_FinderThingy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA58D4F2CB71E96EE1B4EB3D /* Pods_FinderThingy.framework */; };
@@ -58,6 +59,7 @@
 		D3415B1A1F1B310900B9D4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3415B291F1B412700B9D4E7 /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 		D3415B2B1F1B437800B9D4E7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D38255C21F1BEA86004DD4E6 /* StoreCellClassTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCellClassTableViewCell.swift; sourceTree = "<group>"; };
 		D655557B706C9B832FF44E8A /* Pods-FinderThingyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinderThingyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinderThingyUITests/Pods-FinderThingyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D7F596EDFBEF0479762EF975 /* Pods_FinderThingyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinderThingyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EE8B29D9845930D644052D /* Pods_FinderThingyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinderThingyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 			children = (
 				D3415AFA1F1B310900B9D4E7 /* ViewController.swift */,
 				D3415B2B1F1B437800B9D4E7 /* MapViewController.swift */,
+				D38255C21F1BEA86004DD4E6 /* StoreCellClassTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				D3415AF91F1B310900B9D4E7 /* AppDelegate.swift in Sources */,
 				D3415B2A1F1B412700B9D4E7 /* Places.swift in Sources */,
 				D3415B2C1F1B437800B9D4E7 /* MapViewController.swift in Sources */,
+				D38255C31F1BEA86004DD4E6 /* StoreCellClassTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
