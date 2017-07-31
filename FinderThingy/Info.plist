@@ -41,5 +41,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Show your location on the map</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Asks for your Permission for your location</string>
 </dict>
 </plist>

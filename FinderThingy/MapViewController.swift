@@ -10,10 +10,17 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     private var _currentRestaurant:String!
+    
+    private var googleMapView: GMSMapView!
+    private var locationManager: CLLocationManager?
+    private var _latitude: Double!
+    private var _longitude: Double!
+    private var _currentLocation:CLLocation? // stores the device's current location
     
     var currentRestaurant:String! {
         get {
@@ -25,25 +32,78 @@ class MapViewController: UIViewController {
         }
     }
     
+    var currentLocation:CLLocation? {
+        get {
+            return _currentLocation
+        } set {
+            if (newValue != nil) {
+                _currentLocation = newValue
+            }
+        }
+    }
+    
+    var longitude:Double! {
+        get {
+            return _longitude
+        } set {
+            if (newValue != nil) {
+                _longitude = newValue
+            }
+        }
+    }
+
+    var latitude:Double! {
+        get {
+            return _latitude
+        } set {
+            if (newValue != nil){
+                _latitude = newValue
+            }
+        }
+    }
+
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.startUpdatingLocation() /* need this even though it's in viewdidappear. Maybe viewdidload only called once? */
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager?.distanceFilter = 5.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        // This part is for the device location //
+        self.locationManager?.startUpdatingLocation()
+    
+        // 2: assuming after coordinates updated in didUpdateLocations
+        let coordinates = CLLocationCoordinate2DMake(self.latitude, self.longitude)
+        let marker = GMSMarker(position: coordinates)
+        let camera = GMSCameraPosition.camera(withLatitude: coordinates.latitude, longitude: coordinates.longitude, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
+        //self.view = mapView
         mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
+        marker.position = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        marker.title = "I am here"
         marker.map = mapView
+        
+        //////////////////////////////////////////
+        // This part is for restaurant location //
+        
+        
+        //////////////////////////////////////////
+
         
     }
 
@@ -51,6 +111,35 @@ class MapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // function keeps an update on the devices current location
+        // let locationsCount = locations.count
+        // self.currentLocation = locations[locationsCount-1]
+        self.currentLocation = locations.last
+        
+        
+        // 1: update the coordinates when location is updated
+        self.latitude = self.currentLocation?.coordinate.latitude
+        self.longitude = self.currentLocation?.coordinate.longitude
+        
+    }
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        //error handling
+        print(error)
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        if parent != nil {
+            print("back button pressed")
+            self.locationManager?.stopUpdatingLocation()
+        }
+       
+    }
+    
     
 
     /*
