@@ -22,4 +22,4 @@
  */
 
 #error Register for API Key and insert here. Then delete this line.
-static NSString *const kAPIKey = @"";
+static NSString *const kAPIKey = @"AIzaSyC5i6xJ0UcJL9ltBarxxhsPtfBANkoqUy8";

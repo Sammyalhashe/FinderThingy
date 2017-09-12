@@ -595,6 +595,7 @@
 					.,
 					"$(SDKROOT)/System/Library/Frameworks",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = Me.FinderThingy;
 				PRODUCT_NAME = GoogleMapsDemos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";

@@ -13,9 +13,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    let pizza = Places(type: "Pizza")
+    let fastfood = Places(type: "Fast Food")
     let coffee = Places(type: "Coffee")
+    let movie = Places(type: "Movie")
     var selectedIndexPath:IndexPath?
+    
+    private var _typeOfThing:String!
+    
+    var typeOfThing:String! {
+        get {
+            return _typeOfThing
+        } set {
+            if (newValue != nil) && (newValue != "") {
+                _typeOfThing = newValue
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,27 +45,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // How many rows in each section?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return coffee.places.count
+//        if section == 0 {
+//            return coffee.places.count
+//        }
+//            
+//        else {
+//            return pizza.places.count
+//        }
+        if self.typeOfThing! == "Fast Food" {
+            return fastfood.places.count
         }
-            
-        else {
-            return pizza.places.count
+        if self.typeOfThing! == "Coffee" {
+            return coffee.places.count
+        } else {
+            return movie.places.count
         }
     }
     
     // How many sections are there? Is it one list or more than one?
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Coffee Shops"
-        } else {
-            return "Pizza Places"
+//        if section == 0 {
+//            return "Coffee Shops"
+//        } else {
+//            return "Pizza Places"
+//        }
+        if self.typeOfThing! == "Fast Food" {
+            return "Fast Food Places"
         }
-
+        if self.typeOfThing! == "Coffee" {
+            return "Coffee Places"
+        } else {
+            return "Movie Theatres"
+        }
     }
 
     
@@ -69,17 +98,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // The as? StoreCellClassTableViewCell expression attempts to downcast the returned object from the UITableViewCell class to your StoreCellClassTableViewCell class. This returns an optional. The guard statement lets you safely unwrap an optional by giving you and else clause in case something goes wrong.
         
-        if indexPath.section == 0 {
-            // Some optional chaining here
+//        if indexPath.section == 0 {
+//            // Some optional chaining here
+//            cell.textLabel?.text = coffee.places[indexPath.row]
+//            
+//        }
+//            
+//        else {
+//            // Some optional chaining here
+//            cell.textLabel?.text = pizza.places[indexPath.row]
+//            
+//        }
+        
+        if self.typeOfThing! == "Fast Food" {
+            cell.textLabel?.text = fastfood.places[indexPath.row]
+        }
+        if self.typeOfThing! == "Coffee" {
             cell.textLabel?.text = coffee.places[indexPath.row]
-            
+        } else {
+            cell.textLabel?.text = movie.places[indexPath.row]
         }
-            
-        else {
-            // Some optional chaining here
-            cell.textLabel?.text = pizza.places[indexPath.row]
-            
-        }
+
         
         return cell
     }
@@ -114,14 +153,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // Pass the selected object to the new view controller.
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                if indexPath.section == 0 {
-                    let selectedRestaurant = coffee.places[indexPath.row]
-                    mapScene?.currentRestaurant = selectedRestaurant
-                }else{
-                    let selectedRestaurant = pizza.places[indexPath.row]
+//                if indexPath.section == 0 {
+//                    let selectedRestaurant = coffee.places[indexPath.row]
+//                    mapScene?.currentRestaurant = selectedRestaurant
+//                }else{
+//                    let selectedRestaurant = fastfood.places[indexPath.row]
+//                    mapScene?.currentRestaurant = selectedRestaurant
+//                }
+                if self.typeOfThing! == "Fast Food" {
+                    let selectedRestaurant = fastfood.places[indexPath.row]
                     mapScene?.currentRestaurant = selectedRestaurant
                 }
+                if self.typeOfThing! == "Coffee" {
+                    let selectedRestaurant = coffee.places[indexPath.row]
+                    mapScene?.currentRestaurant = selectedRestaurant
+                } else {
+                    let selectedRestaurant = movie.places[indexPath.row]
+                    mapScene?.currentRestaurant = selectedRestaurant
+                }
+                
             }
+            
         }
     }
 

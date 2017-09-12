@@ -42,6 +42,6 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Show your location on the map</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Asks for your Permission for your location</string>
+	<string>To help you find coffee/pizza shops fast by fetching before you started the app</string>
 </dict>
 </plist>

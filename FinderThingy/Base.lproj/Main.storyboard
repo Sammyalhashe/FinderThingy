@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="blf-bA-7Qy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hbi-ik-Hp4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -69,23 +69,130 @@
             </objects>
             <point key="canvasLocation" x="2764" y="138.98050974512745"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mXe-uB-URN">
+        <!--Start View Controller-->
+        <scene sceneID="Tca-uR-N4e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="blf-bA-7Qy" sceneMemberID="viewController">
+                <viewController id="hAg-hT-GYw" customClass="StartViewController" customModule="FinderThingy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q8j-iF-vzh"/>
+                        <viewControllerLayoutGuide type="bottom" id="e9z-1Z-Ixh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IPx-pe-VDd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="3qk-NO-obL">
+                                <rect key="frame" x="27" y="72" width="320" height="462"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2Lc-yR-ETh">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-xm-7bj">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Coffee" backgroundImage="food-beans-coffee-drink-1">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbZ-xH-mDN">
+                                                <rect key="frame" x="170" y="0.0" width="150" height="150"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Fast Food" backgroundImage="pexels-photo-115740">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pSp-aW-jX0">
+                                        <rect key="frame" x="0.0" y="156" width="320" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crn-Ho-swJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Tennis" backgroundImage="pexels-photo-171568">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ynf-aO-Qb4">
+                                        <rect key="frame" x="0.0" y="312" width="320" height="150"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-Zd-RT0">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Movies" backgroundImage="popcorn-movie-party-entertainment">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMe-Nj-2iQ">
+                                                <rect key="frame" x="170" y="0.0" width="150" height="150"/>
+                                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                                <state key="normal" title="Soccer" backgroundImage="the-ball-stadion-football-the-pitch-47730">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you Want? -Finder Thingy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MZ-XF-bbr">
+                                <rect key="frame" x="27" y="549" width="320" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="NRo-lG-dLn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6MZ-XF-bbr" firstAttribute="trailing" secondItem="3qk-NO-obL" secondAttribute="trailing" id="45S-oC-6KG"/>
+                            <constraint firstItem="6MZ-XF-bbr" firstAttribute="leading" secondItem="3qk-NO-obL" secondAttribute="leading" id="Qli-aS-Ke3"/>
+                            <constraint firstItem="3qk-NO-obL" firstAttribute="centerX" secondItem="IPx-pe-VDd" secondAttribute="centerX" id="cvn-Z2-FQd"/>
+                            <constraint firstItem="e9z-1Z-Ixh" firstAttribute="top" secondItem="6MZ-XF-bbr" secondAttribute="bottom" constant="49" id="dCU-bK-oCy"/>
+                            <constraint firstItem="3qk-NO-obL" firstAttribute="top" secondItem="q8j-iF-vzh" secondAttribute="bottom" constant="8" symbolic="YES" id="mLG-0K-ekM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sv2-zJ-ejE"/>
+                    <connections>
+                        <outlet property="FastFoodOutlet" destination="ZbZ-xH-mDN" id="1S3-Kl-Mpd"/>
+                        <outlet property="coffeeOutlet" destination="uGe-xm-7bj" id="81K-X4-DQV"/>
+                        <outlet property="movieOutlet" destination="ddE-Zd-RT0" id="gaA-dE-eTI"/>
+                        <outlet property="soccerOutlet" destination="WMe-Nj-2iQ" id="dNe-qC-8PP"/>
+                        <outlet property="tennisOutlet" destination="Crn-Ho-swJ" id="wEV-uN-wnJ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="SeguetoTableView" id="vuZ-RR-wUi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vLB-kc-3o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424.8000000000002" y="815.44227886056979"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dBj-HX-TBH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hbi-ik-Hp4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a6z-Jj-hu1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zy-yK-mXQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nqT-OC-McN"/>
+                        <segue destination="hAg-hT-GYw" kind="relationship" relationship="rootViewController" id="arR-WD-qLH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6E-Ie-RQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cm-PF-Qv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1485.5999999999999" y="815.44227886056979"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="food-beans-coffee-drink-1" width="150" height="150"/>
+        <image name="pexels-photo-115740" width="150" height="150"/>
+        <image name="pexels-photo-171568" width="150" height="150"/>
+        <image name="popcorn-movie-party-entertainment" width="150" height="150"/>
+        <image name="the-ball-stadion-football-the-pitch-47730" width="150" height="150"/>
+    </resources>
 </document>
