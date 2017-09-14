@@ -180,6 +180,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 restMarker.map = self.mapView
                 restMarker.appearAnimation = .pop
                 restMarker.title = "\((self.currentRestaurant)!) \(j)"
+                print("Lat/Lon = \(restPosition.latitude)/\(restPosition.longitude)")
                 j += 1
 
             }

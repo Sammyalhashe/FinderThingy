@@ -57,8 +57,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         if self.typeOfThing! == "Coffee" {
             return coffee.places.count
-        } else {
+        }
+        if self.typeOfThing! == "Movies" {
             return movie.places.count
+        }
+        else {
+            return 0
         }
     }
     
@@ -78,8 +82,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         if self.typeOfThing! == "Coffee" {
             return "Coffee Places"
-        } else {
+        }
+        if self.typeOfThing! == "Movies" {
             return "Movie Theatres"
+        }
+        else {
+            return nil
         }
     }
 
@@ -115,7 +123,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         if self.typeOfThing! == "Coffee" {
             cell.textLabel?.text = coffee.places[indexPath.row]
-        } else {
+        }
+        if self.typeOfThing! == "Movies" {
             cell.textLabel?.text = movie.places[indexPath.row]
         }
 
@@ -167,7 +176,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if self.typeOfThing! == "Coffee" {
                     let selectedRestaurant = coffee.places[indexPath.row]
                     mapScene?.currentRestaurant = selectedRestaurant
-                } else {
+                }
+                if self.typeOfThing! == "Movies" {
                     let selectedRestaurant = movie.places[indexPath.row]
                     mapScene?.currentRestaurant = selectedRestaurant
                 }

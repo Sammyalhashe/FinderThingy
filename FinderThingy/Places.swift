@@ -12,8 +12,8 @@ class Places {
     
     // Class holds all types of places considered
     
-    let coffeePlaces = ["Starbucks","Tim Hortons","Second Cup","Timothy's World Coffee"]
-    let fastFoodPlaces = ["PizzaPizza","Pizza Nova","Domino's Pizza","Gino's Pizza"]
+    let coffeePlaces = ["Starbucks","Tim Hortons","Second Cup","Timothy's World Coffee","Peets Coffee & Tea","The Coffee Bean & Tea Leaf"]
+    let fastFoodPlaces = ["zpizza","Pizza Nova","Domino's Pizza","Gino's Pizza","McDonalds","In-N-Out","FiveGuys"]
     let moviePlaces = ["Cineplex","AMC"]
     
     private var _places: [String]!
@@ -37,7 +37,7 @@ class Places {
         if type == "Coffee" {
             self._places = coffeePlaces
         }
-        else {
+        if type == "Movie" {
             self._places = moviePlaces
         }
     }
