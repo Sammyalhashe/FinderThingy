@@ -12,6 +12,7 @@ import GooglePlaces
 import GooglePlacePicker
 import CoreLocation
 import MapKit
+import Alamofire
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
@@ -136,7 +137,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager?.startUpdatingLocation()
-        }
+        
         
         // showing the user's position on map and giving a reasonable camera zoom
         self.camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom:15)
@@ -186,7 +187,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
 
-        
+        } else {
+            self.locationManager?.requestAlwaysAuthorization()
+        }
         
     }
 
@@ -199,6 +202,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // function is called whenever the location of device updates
+        if CLLocationManager.locationServicesEnabled() {
+            
         
         // let location = locations[0]
         // I think the zero index is the most recent location
@@ -257,6 +262,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.mapView.animate(to: camera)
         
         // print("\(longitude!), \(latitude!)")
+        } else {
+            self.locationManager?.requestAlwaysAuthorization()
+        }
     }
     
     

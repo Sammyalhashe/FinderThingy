@@ -10,7 +10,7 @@ target 'FinderThingy' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
-  pod 'Alamofire', '~> 4.4'
+  pod 'Alamofire', '~> 4.4’
 
   target 'FinderThingyTests' do
     inherit! :search_paths
