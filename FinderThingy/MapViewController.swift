@@ -116,7 +116,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         self.locationManager = CLLocationManager()
         self.locationManager?.requestAlwaysAuthorization()
-        self.locationManager?.requestWhenInUseAuthorization()
+        // self.locationManager?.requestWhenInUseAuthorization()
        
         
         if CLLocationManager.locationServicesEnabled() {
@@ -135,7 +135,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         
         
-        if CLLocationManager.locationServicesEnabled() {
+        if (CLLocationManager.locationServicesEnabled()||CLLocationManager.authorizationStatus() == .authorizedAlways) {
             self.locationManager?.startUpdatingLocation()
         
         
@@ -202,7 +202,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // function is called whenever the location of device updates
-        if CLLocationManager.locationServicesEnabled() {
+        if (CLLocationManager.locationServicesEnabled()||CLLocationManager.authorizationStatus() == .authorizedAlways) {
             
         
         // let location = locations[0]
