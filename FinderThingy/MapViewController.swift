@@ -15,26 +15,29 @@ import MapKit
 import Alamofire
 
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
+    /* private vars */
     private var _currentRestaurant:String!
     private var _restaurantsLatitudes:Double!
     private var _restaurantsLongitudes:Double!
+    private var _searchResponse:[MKMapItem]!
     
-    
-    private var googleMapView: GMSMapView!
     private var locationManager: CLLocationManager?
     private var _latitude: Double!
     private var _longitude: Double!
     private var _currentLocation:CLLocation? // stores the device's current location
-    private var _myReg:CLCircularRegion?
+    //////////////////////////////////////////////////////////////////////////////////////
     
     
+    /* Object Instanatiation */
     let marker = GMSMarker()
-    lazy var geocoder = CLGeocoder() // lazy var doesn't have its value calculated until it is first used
     var camera = GMSCameraPosition()
     var mapView = GMSMapView()
+    //////////////////////////////////////////////////////////////////////////////////////
     
+    
+    /* public vars */
     var currentRestaurant:String! {
         get {
             return _currentRestaurant
@@ -55,16 +58,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    var myReg:CLCircularRegion? {
-        get {
-            return _myReg
-        } set {
-            if (newValue != nil) {
-                _myReg = newValue
-            }
-        }
-    }
-
     
     var longitude:Double! {
         get {
@@ -106,100 +99,157 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
     }
+    
+    var searchResponse:[MKMapItem]! {
+        get {
+            return _searchResponse
+        } set {
+            if (newValue != nil) && (newValue != []) {
+                _searchResponse = newValue
+            }
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
 
 
     
+    /* viewdidLoad Called once */
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
         self.locationManager = CLLocationManager()
-        self.locationManager?.requestAlwaysAuthorization()
-        // self.locationManager?.requestWhenInUseAuthorization()
-       
+        
+        
+        locationAuthorizationStatus()
+        
+        
+        mapView.delegate = self
+        self.view = mapView
+        
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager?.delegate = self
             self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager?.distanceFilter = 5.0
             self.locationManager?.startUpdatingLocation()
+            self.currentLocation = locationManager?.location
+            self.locationManager?.startMonitoringSignificantLocationChanges()
+        } else {
+            self.locationManager?.requestAlwaysAuthorization()
         }
-        // print(currentRestaurant) // checked: restaurant name gets through segue
+        
+//        do {
+//            // Set the map style by passing the URL of the local file.
+//            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+//                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+//            } else {
+//                NSLog("Unable to find style.json")
+//            }
+//        } catch {
+//            NSLog("One or more of the map styles failed to load. \(error)")
+//        }
+        
     }
+    //////////////////////////////////////////////////////////////////////////////////////
     
     
     
+    /* viewDidAppear called everytime the screen shows */
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
         
+//        do {
+//            // Set the map style by passing the URL of the local file.
+//            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+//                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+//            } else {
+//                NSLog("Unable to find style.json")
+//            }
+//        } catch {
+//            NSLog("One or more of the map styles failed to load. \(error)")
+//        }
+
+        
         if (CLLocationManager.locationServicesEnabled()||CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            
+            self.currentLocation = locationManager?.location
+            self.longitude = self.currentLocation?.coordinate.longitude
+            self.latitude = self.currentLocation?.coordinate.latitude
             self.locationManager?.startUpdatingLocation()
+            
+            
+        
+       
+            // showing the user's position on map and giving a reasonable camera zoom
+            self.camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom:15)
+            self.mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+            mapView.delegate = self
+            self.view = mapView
+            //mapView.mapType = .normal
+            mapView.isMyLocationEnabled = true
         
         
-        // showing the user's position on map and giving a reasonable camera zoom
-        self.camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom:15)
-        self.mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        self.view = mapView
-        mapView.mapType = .normal
-        mapView.isMyLocationEnabled = true
+            // getting my location coordinates from currentLocation
+            let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake((self.currentLocation?.coordinate.latitude)!, (self.currentLocation?.coordinate.longitude)!)
         
-        // adding a marker designating my position
-        // self.marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        // self.marker.title = "MY Location"
-        // self.marker.map = mapView
+            
+            // creating a region object where I am
+            let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+            let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         
-        
-        // getting my location coordinates from currentLocation
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake((self.currentLocation?.coordinate.latitude)!, (self.currentLocation?.coordinate.longitude)!)
-        
-        // creating a region object where I am
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        
-        // creating a map search request querying for the restaurant name (ie. Starbucks) in region created
-        let mapSearchRequest = MKLocalSearchRequest()
-        mapSearchRequest.naturalLanguageQuery = self.currentRestaurant
+            
+            // creating a map search request querying for the restaurant name (ie. Starbucks) in region created
+            let mapSearchRequest = MKLocalSearchRequest()
+            mapSearchRequest.naturalLanguageQuery = self.currentRestaurant
                 mapSearchRequest.region = region
        
-        // processing the response of the search request
-        let search = MKLocalSearch(request: mapSearchRequest)
-        search.start { response, error in
-            guard let response = response else {
-                print("There was an error searching for: \(String(describing: mapSearchRequest.naturalLanguageQuery)) error: \(String(describing: error))")
-                return
-            }
             
-            var j = 1
-            for item in response.mapItems {
+            // processing the response of the search request
+            let search = MKLocalSearch(request: mapSearchRequest)
+            search.start { response, error in
+                guard let response = response else {
+                    print("There was an error searching for: \(String(describing: mapSearchRequest.naturalLanguageQuery)) error: \(String(describing: error))")
+                    return
+                }
+                self.searchResponse = response.mapItems
+            
+                var j = 1
+                for item in response.mapItems {
                 
-                // add markers to google maps
-                let restPosition = CLLocationCoordinate2D(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude)
-                let restMarker = GMSMarker(position: restPosition)
-                restMarker.map = self.mapView
-                restMarker.appearAnimation = .pop
-                restMarker.title = "\((self.currentRestaurant)!) \(j)"
-                print("Lat/Lon = \(restPosition.latitude)/\(restPosition.longitude)")
-                j += 1
-
+                    // add markers to google maps
+                    let restPosition = CLLocationCoordinate2D(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude)
+                    let restMarker = GMSMarker(position: restPosition)
+                    restMarker.map = self.mapView
+                    restMarker.appearAnimation = .pop
+                    restMarker.title = "\((self.currentRestaurant)!) \(j)"
+                    restMarker.accessibilityValue = "\(j-1)"
+                    print("Lat/Lon = \(restPosition.latitude)/\(restPosition.longitude)")
+                    j += 1
+                    
+                }
             }
-        }
-
-        } else {
-            self.locationManager?.requestAlwaysAuthorization()
-        }
-        
+            } else {
+                self.locationManager?.requestAlwaysAuthorization()
+            }
     }
-
+    //////////////////////////////////////////////////////////////////////////////////////
     
+    
+    /* don't really know what this does, it is default in a generated class */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //////////////////////////////////////////////////////////////////////////////////////
     
     
+    
+    /* didUpdateLocations  called when the device location updates */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // function is called whenever the location of device updates
         if (CLLocationManager.locationServicesEnabled()||CLLocationManager.authorizationStatus() == .authorizedAlways) {
@@ -209,22 +259,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // I think the zero index is the most recent location
         let location = locations[0]
         
+            
         // clearing markers previosly there
         self.mapView.clear()
         
+            
         let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        // let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         
         
         // creating a region object where I am
         let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         
+            
         // creating a map search request querying for the restaurant name (ie. Starbucks) in region created
         let mapSearchRequest = MKLocalSearchRequest()
         mapSearchRequest.naturalLanguageQuery = self.currentRestaurant
         mapSearchRequest.region = region
         
+            
         // processing the response of the search request
         let search = MKLocalSearch(request: mapSearchRequest)
         search.start { response, error in
@@ -232,6 +285,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 print("There was an error searching for: \(String(describing: mapSearchRequest.naturalLanguageQuery)) error: \(String(describing: error))")
                 return
             }
+            
+            self.searchResponse = response.mapItems
             
             var j = 1
             for item in response.mapItems {
@@ -242,6 +297,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 restMarker.map = self.mapView
                 restMarker.appearAnimation = .pop
                 restMarker.title = "\((self.currentRestaurant)!) \(j)"
+                restMarker.accessibilityValue = "\(j-1)"
+                
                 j += 1
             }
         }
@@ -266,15 +323,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             self.locationManager?.requestAlwaysAuthorization()
         }
     }
+    //////////////////////////////////////////////////////////////////////////////////////
     
     
-    
+    /* Called when a Location error is encountered, usually no location and tries to unwrap nil */
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         //error handling
         print(error)
     }
+    //////////////////////////////////////////////////////////////////////////////////////
     
     
+    
+    /* Called when going back to parent */
     override func willMove(toParentViewController parent: UIViewController?) {
         if parent != nil {
             print("back button pressed")
@@ -282,36 +343,69 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
        
     }
+    //////////////////////////////////////////////////////////////////////////////////////
     
-//    // private methods
-//    
-//    private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
-//        // Update View
-//        
-//        if let error = error {
-//            print("Unable to Forward Geocode Address (\(error))")
-//            
-//            
-//        } else {
-//            var location: CLLocation?
-//            
-//            if let placemarks = placemarks, placemarks.count > 0 {
-//                location = placemarks.first?.location
-//            }
-//            
-//            if let location = location {
-//                let coordinate = location.coordinate
-//                restaurantsLatitude = coordinate.latitude
-//                restaurantsLongitude = coordinate.longitude
-//                
-//                print("\(restaurantsLongitude!) \(restaurantsLatitude!)")
-//                
-//            } else {
-//                print("No Matching Location Found")
-//            }
-//        }
-//    }
+    
+    /* Created this function to make location authorization easier */
+    func locationAuthorizationStatus () {
+        if (CLLocationManager.locationServicesEnabled()||CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            self.currentLocation = locationManager?.location
+            
+        } else {
+            self.locationManager?.requestAlwaysAuthorization()
+            locationAuthorizationStatus()
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    /* didTap marker called when a GMSMarker is tapped! */
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
+        my_dest = marker.position
+        my_origin = self.currentLocation?.coordinate
+        
+        
+        let currPlace = currentPlace(currentRestaurant: self.currentRestaurant, currentLocation: self.currentLocation!, longitude: self.longitude, latitude: self.latitude, restaurantsLongitude: marker.position.longitude, restaurantsLatitude: marker.position.latitude)
+        
+        
+        createAlert(title: "Do you want directions to \(marker.title!)", message: "Select 'Yes' if so", currPlace: currPlace)
 
+        return false
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
+    
+    
+
+    /* Function I made to create a popup asking if I want the directions */
+    func createAlert(title:String, message:String,currPlace:currentPlace) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        let YesactionToAdd = UIAlertAction(title: "Yes", style: .default, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+            
+            currPlace.downloadDirectionsData {
+                //code
+            }
+
+        })
+        
+        
+        let NoactionToAdd = UIAlertAction(title: "No", style: .default, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+            return
+        })
+        
+        
+        alert.addAction(YesactionToAdd)
+        alert.addAction(NoactionToAdd)
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
 
     /*
     // MARK: - Navigation

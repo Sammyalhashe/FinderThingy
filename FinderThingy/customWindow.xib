@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomInfoWindow" customModule="FinderThingy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="221"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0z-Uc-08b">
+                    <rect key="frame" x="16" y="171" width="192" height="30"/>
+                    <state key="normal" title="Get Directions"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IIJ-P8-5YV">
+                    <rect key="frame" x="16" y="20" width="192" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="yDh-IG-A8U"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="s0z-Uc-08b" firstAttribute="trailing" secondItem="IIJ-P8-5YV" secondAttribute="trailing" id="1yi-KU-eoA"/>
+                <constraint firstItem="IIJ-P8-5YV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AaR-im-n0D"/>
+                <constraint firstItem="s0z-Uc-08b" firstAttribute="leading" secondItem="IIJ-P8-5YV" secondAttribute="leading" id="BgF-i6-61G"/>
+                <constraint firstItem="IIJ-P8-5YV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Oxu-99-iE3"/>
+                <constraint firstItem="IIJ-P8-5YV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="VLd-Ch-Hqf"/>
+                <constraint firstItem="s0z-Uc-08b" firstAttribute="top" secondItem="IIJ-P8-5YV" secondAttribute="bottom" constant="23" id="czp-C7-fzE"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="directionsButton" destination="s0z-Uc-08b" id="u97-0G-wBs"/>
+                <outlet property="imageIcon" destination="IIJ-P8-5YV" id="Z7u-St-57u"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="103.5"/>
+        </view>
+    </objects>
+</document>

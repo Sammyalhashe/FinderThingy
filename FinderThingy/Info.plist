@@ -43,5 +43,10 @@
 	<string>Show your location on the map</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>To help you find coffee/pizza shops fast by fetching before you started the app</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
