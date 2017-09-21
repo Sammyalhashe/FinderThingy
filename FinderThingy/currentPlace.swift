@@ -100,8 +100,9 @@ class currentPlace {
             //print(result)
             if let directionsDict = result.value as? Dictionary<String,AnyObject> {
                 if let routes = directionsDict["routes"] {
-                    if let firstRoute = routes[0] as? Dictionary<String,AnyObject>{
-                        if let legs = firstRoute["legs"] as? [Dictionary<String,AnyObject>?]{
+                    for route_index in (0...routes.count-1) {
+                    if let Route = routes[route_index] as? Dictionary<String,AnyObject>{
+                        if let legs = Route["legs"] as? [Dictionary<String,AnyObject>?]{
                             for i in 0...(legs.count-1) {
                                 if let leg = legs[i] {
                                     if let distance = leg["distance"] as? Dictionary<String,AnyObject>, let steps = leg["steps"] as? [Dictionary<String,AnyObject>?] {
@@ -119,6 +120,8 @@ class currentPlace {
                                 }
                             }
                         }
+                    }
+                    
                     }
                 }
             }
