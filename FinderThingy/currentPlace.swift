@@ -97,8 +97,31 @@ class currentPlace {
         Alamofire.request(directionsURL, method: .get).responseJSON { response in
             let result = response.result
             print(direction_request_URL)
-            print(response)
-            
+            //print(result)
+            if let directionsDict = result.value as? Dictionary<String,AnyObject> {
+                if let routes = directionsDict["routes"] {
+                    if let firstRoute = routes[0] as? Dictionary<String,AnyObject>{
+                        if let legs = firstRoute["legs"] as? [Dictionary<String,AnyObject>?]{
+                            for i in 0...(legs.count-1) {
+                                if let leg = legs[i] {
+                                    if let distance = leg["distance"] as? Dictionary<String,AnyObject>, let steps = leg["steps"] as? [Dictionary<String,AnyObject>?] {
+                                        print("distance to destination: \(distance["text"]!)")
+                                        for k in 0...(steps.count-1) {
+                                            if let step = steps[k] {
+                                                if let stepDist = step["distance"] as? Dictionary<String,AnyObject>, let stepDuration = step["duration"] as? Dictionary<String,AnyObject>, let html_Instr = step["html_instructions"] {
+                                                    print("Step Distance: \(stepDist["text"]!)\n")
+                                                    print("Step Duration: \(stepDuration["text"]!)\n")
+                                                    print("HTML to process: \(html_Instr)\n")
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         completed() // type-alias defined in constants file
     }
