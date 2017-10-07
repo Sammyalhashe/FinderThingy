@@ -30,6 +30,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     //////////////////////////////////////////////////////////////////////////////////////
     
     
+    
+    
     /* Object Instanatiation */
     let marker = GMSMarker()
     var camera = GMSCameraPosition()
@@ -192,6 +194,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.view = mapView
             //mapView.mapType = .normal
             mapView.isMyLocationEnabled = true
+            self.mapView.settings.myLocationButton = true
         
         
             // getting my location coordinates from currentLocation
@@ -371,7 +374,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         
         createAlert(title: "Do you want directions to \(marker.title!)", message: "Select 'Yes' if so", currPlace: currPlace)
-
+        
+        
+            
+        
+        
+        
         return false
     }
     //////////////////////////////////////////////////////////////////////////////////////
@@ -388,6 +396,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
             currPlace.downloadDirectionsData {
                 //code
+                //let overPolylines:[String] = currPlace.overViewPolylines
+                let overPolylines = currPlace.overViewPolylines as? String
+                
+                var polyLines:[GMSPolyline] = []
+                
+                
+                print(currPlace.processComplete)
+                print(overPolylines)
+                
+                let path:GMSMutablePath = GMSMutablePath(fromEncodedPath: (overPolylines)!)!
+                polyLines.append(GMSPolyline(path: path))
+                polyLines[0].map = self.mapView
             }
 
         })
@@ -405,7 +425,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         self.present(alert, animated: true, completion: nil)
     }
-    //////////////////////////////////////////////////////////////////////////////////////
+    
+     //////////////////////////////////////////////////////////////////////////////////////
+    
+   
 
     /*
     // MARK: - Navigation

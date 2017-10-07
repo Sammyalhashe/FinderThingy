@@ -20,12 +20,14 @@ class currentPlace {
     private var _currentRestaurant:String!
     private var _restaurantsLatitudes:Double!
     private var _restaurantsLongitudes:Double!
+    private var _overViewPolylines: String!
     
     private var locationManager: CLLocationManager?
     private var _latitude: Double!
     private var _longitude: Double!
     private var _currentLocation:CLLocation? // stores the device's current location
     
+    public var processComplete:Int = 0
 
     
     var currentRestaurant:String! {
@@ -34,6 +36,16 @@ class currentPlace {
         } set {
             if (newValue != nil) && (newValue != "") {
                 _currentRestaurant = newValue
+            }
+        }
+    }
+    
+    var overViewPolylines:String! {
+        get {
+            return _overViewPolylines
+        } set {
+            if (newValue != nil) && (newValue != "") {
+                _overViewPolylines = newValue
             }
         }
     }
@@ -97,9 +109,9 @@ class currentPlace {
         Alamofire.request(directionsURL, method: .get).responseJSON { response in
             let result = response.result
             print(direction_request_URL)
-            //print(result)
+            print(response)
             if let directionsDict = result.value as? Dictionary<String,AnyObject> {
-                if let routes = directionsDict["routes"] {
+                if let routes = directionsDict["routes"] as? [Dictionary<String,AnyObject>] {
                     for route_index in (0...routes.count-1) {
                     if let Route = routes[route_index] as? Dictionary<String,AnyObject>{
                         if let legs = Route["legs"] as? [Dictionary<String,AnyObject>?]{
@@ -120,6 +132,15 @@ class currentPlace {
                                 }
                             }
                         }
+                        if let Overview_Polyline = Route["overview_polyline"] as? Dictionary<String,String> {
+                            if let point = Overview_Polyline["points"] {
+                                //print(point)
+                                self.overViewPolylines = point
+                                print(self.overViewPolylines)
+                                
+                            }
+                            
+                        }
                     }
                     
                     }
@@ -127,6 +148,7 @@ class currentPlace {
             }
         }
         completed() // type-alias defined in constants file
+        self.processComplete = 1
     }
     
     init(currentRestaurant:String,currentLocation:CLLocation,longitude:Double, latitude:Double,restaurantsLongitude:Double,restaurantsLatitude:Double) {
